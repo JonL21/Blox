@@ -22,11 +22,13 @@ if scoreFade > 0 {
 
 if global.combo > 0
     { draw_text(global.border[1] + 128, global.border[3] + 256, string("Combo: " + string(global.combo))); posx += 32; }
-    
-if global.tspin
-    { draw_text(global.border[1] + 128, global.border[3] + posx, string("T-SPIN")); posx += 32; }
-else if global.tspinmini
-    { draw_text(global.border[1] + 128, global.border[3] + posx, string("T-SPIN MINI")); posx += 32; }    
+
+if global.tspin	{
+	draw_text(global.border[1] + 128, global.border[3] + posx, string("T-SPIN")); posx += 32;
+}
+else if global.tspinmini { 
+	draw_text(global.border[1] + 128, global.border[3] + posx, string("T-SPIN MINI")); posx += 32;
+}    
 
 
 draw_set_halign(fa_center);

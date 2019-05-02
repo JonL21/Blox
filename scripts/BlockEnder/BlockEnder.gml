@@ -10,7 +10,7 @@ with o_ghost_block instance_destroy();
 var posx;
 var posy;
 var repeats;
-if sprite_index == spr_I {
+if sprite_index == spr_I { 
     posx = x - 64;
     posy = y - 64;
     repeats = 4;
@@ -50,4 +50,4 @@ repeat repeats {
 }
 visible = false;
 
-alarm[2] = 1;
+if !global.game_over alarm[2] = 1;

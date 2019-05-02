@@ -1,35 +1,22 @@
-/// @description  Local variables
+/// @description Declare Local variables
 
 // Sprite related
 image_speed = 0;
 
 // Technical
-lock_delay = 30; // How many frames before block solidifies
+lock_delay = 20; // How many frames before block solidifies
 lock_cancels = 15; // How many successful moves/rotations can delay block lock
-lockdown = false;
+lockdown = false; // Flag to prevent further movement
 
 shift_delay = 14; // How many frames to hold left/right before block slides in desired direction
 das = 0; // Counter to shift_delay
 
-enum successful_move {
-    none = -1,
-    left_right = 0,
-    soft_drop = 1,
-    hard_drop = 2,
-    rotation = 3,
-    kick = 4
-}
+last_move = successful_move.none; // The last successful movement of the block
 
-last_move = successful_move.none;
-
-var lines; // The lines to tell LineChecker to check
-cleared_lines = 0;
+cleared_lines = 0; // Number of lines cleared after this block solidifies
+tspin_type = tspin_check.none; // Checks what type of T-Spin 
 
 hold_available = true; // Allow one use to hold block
 
 // Visual
 emitter = part_emitter_create(global.par_sys);
-
-// Start falling
-alarm_set(0, 60);
-

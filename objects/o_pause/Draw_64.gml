@@ -6,12 +6,12 @@ draw_rectangle_colour(0, 0, room_width, room_height, c_ltgray,c_ltgray,c_ltgray,
 draw_set_alpha(1);
 
 // RESUME
-//if (!global.game_over) {
+if (!global.game_over) {
     if (menu_select == 0) scales[0] = min(scales[0] + 0.1, 1);
     else scales[0] = max(scales[0] - 0.1, 0.5);
     draw_text_transformed_colour(x + 2, y + 2 - (scales[0] * 16), "RESUME", scales[0], scales[0], 0, c_black,c_black,c_black,c_black, 0.5);
     draw_text_transformed(x, y - (scales[0] * 16), "RESUME", scales[0], scales[0], 0);
-//}
+}
 
 // RESTART
 if (menu_select == 1) scales[1] = min(scales[1] + 0.1, 1);

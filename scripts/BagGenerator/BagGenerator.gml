@@ -1,6 +1,6 @@
 // BagGenerator
 
-// Generate two 7-Bags if empty list, or add on one if running out
+// Generate two 7-Bags if empty list, or add on one bag if running out
 var ind, repeats;
 if ds_list_size(global.bag) == 0 { ind = 0; repeats = 2};
 else { ind = 7; repeats = 1; }

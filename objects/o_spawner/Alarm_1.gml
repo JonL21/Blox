@@ -12,7 +12,10 @@ else if next_spr == spr_O iid = instance_create_layer(x, y + 32, "Instances", o_
 else iid = instance_create_layer(x - 16, y + 48, "Instances", o_falling_block);
 
 // Set the sprite of the falling block
-with iid sprite_index = next_spr;
+with iid {
+	sprite_index = next_spr;
+	alarm_set(0, 60 / global.fall_speed);
+}
 
 // Add new blocks to bag if emptying out
 if ds_list_size(global.bag) <= 7 BagGenerator();

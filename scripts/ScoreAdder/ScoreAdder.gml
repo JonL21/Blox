@@ -1,62 +1,36 @@
 /// @description  ScoreAdder();
 
 var sum = 0;
+var output = "";
 
-/* Check for T-Spin
-    Criteria:
-    1 - Last successful move was a rotation
-    2 - Three of the four adjacent corners around of the t-block are occupied by a wall/block
-    3 - BOTH corners directy adjacent to the "pointy end" of the t-block are occupied
-    
-    If above are true and 1/2/3 lines are cleared: classified as T-Spin Single/Double/Triple.
-   
-    FOR MINI:
-    1 - Last successful move was a kick
-    2 - The block directly adjacent to the "pointy end" of the t-block is open
-    Only T-Spin Minis and T-Spin Mini Singles are possible.
-    
-    NOTE: The T-Spin triple acheived with a kick does NOT count as a mini, but an actual t-spin
-    
-    All T-Spins qualify for Back-to-Back combos alongside Tetrises.
-*/
-global.tspin = false;
-global.tspinmini = false;
-
-if sprite_index == spr_T {
-    occupied_corner = 0;
-    occupied_point = false;
-    if !place_free(x - 32, y - 32) occupied_corner++;
-    if !place_free(x + 32, y - 32) occupied_corner++;
-    if !place_free(x - 32, y + 32) occupied_corner++;
-    if !place_free(x + 32, y + 32) occupied_corner++;
-    
-    switch image_index {
-        case 0: if (!place_free(x - 32, y - 32) && !place_free(x + 32, y - 32)) occupied_point = true; break;
-        case 1: if (!place_free(x + 32, y - 32) && !place_free(x + 32, y + 32)) occupied_point = true; break;
-        case 2: if (!place_free(x - 32, y + 32) && !place_free(x + 32, y + 32)) occupied_point = true; break;
-        case 3: if (!place_free(x - 32, y - 32) && !place_free(x - 32, y + 32)) occupied_point = true; break;
-    }
-    
-    if occupied_corner >= 3 {
-        if (last_move == successful_move.rotation && occupied_point) || (cleared_lines >= 2 && occupied_point) {
-            global.tspin = true;
-        }
-        else if (last_move == successful_move.kick && cleared_lines <= 1) {
-            global.tspinmini = true;
-        }
-    }
-    
+switch tspin_type {
+	case tspin_check.tspin:
+		output += "T-Spin";
+		global.tspin = true;
+		global.tspinmini = false;
+		break;
+	case tspin_check.mini:
+		output += "T-Spin Mini";
+		global.tspin = false;
+		global.tspinmini = true;
+		break;
+	default:
+		global.tspin = false;
+		global.tspinmini = false;
+		break;
 }
 
 switch cleared_lines {
     case 0:
-        if global.tspin sum += 100;
-        else if global.tspinmini sum += 400;
+        if tspin_type == tspin_check.tspin sum += 100;
+        else if tspin_type == tspin_check.mini sum += 400;
         global.b2b = false;
         break;
     case 1:
+		if string_length(output) == 0 output += "Single";
+		else output += " Single";
         global.singles++;
-        if global.tspin { 
+        if tspin_type == tspin_check.tspin { 
             if global.b2b {
                 sum += max(global.combo * 500, 500);
                 with o_spawner alarm[2] = 1;
@@ -65,7 +39,7 @@ switch cleared_lines {
             sum += 800;
             break;
         }
-        else if global.tspinmini {
+        else if tspin_type == tspin_check.mini {
             if global.b2b {
                 sum += max(global.combo * 500, 500);
                 with o_spawner alarm[2] = 1;
@@ -78,8 +52,10 @@ switch cleared_lines {
         global.b2b = false;
         break;
     case 2:
+		if string_length(output) == 0 output += "Double";
+		else output += " Double";
         global.doubles++;
-        if global.tspin {
+        if tspin_type == tspin_check.tspin {
             if global.b2b {
                 sum += max(global.combo * 500, 500);
                 with o_spawner alarm[2] = 1;
@@ -92,8 +68,10 @@ switch cleared_lines {
         global.b2b = false;
         break;
     case 3:
+		if string_length(output) == 0 output += "Triple";
+		else output += " Triple";
         global.triples++;
-        if global.tspin {
+        if tspin_type == tspin_check.tspin {
             if global.b2b {
                 sum += max(global.combo * 500, 500);
                 with o_spawner alarm[2] = 1;
@@ -106,6 +84,7 @@ switch cleared_lines {
         global.b2b = false;
         break;
     case 4:
+		output = "Quadruple";
         if global.b2b {
             sum += max(global.combo * 500, 500);
             with o_spawner alarm[2] = 1;
@@ -119,9 +98,16 @@ switch cleared_lines {
 // PERFECT CLEAR
 if ds_grid_get_max(global.playfield, 0, 0, global.width - 1, global.height * 2 - 1) == -1 {
 	sum += 1500;
+	output = "ALL CLEAR";
 }
 
 sum += max(global.combo * 50, 0);
+
+with o_line_caller { instance_destroy() }
+with instance_create(global.border[1] + 128, global.border[3] + 288, o_line_caller) {
+	fadeType = 1;
+	callout = output;
+}
 
 score += sum;
 global.total_lines += cleared_lines;

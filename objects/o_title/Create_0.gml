@@ -2,7 +2,7 @@
 
 // Available Options
 menu_options[0] = "Play";
-menu_options[1] = "Colin's Corner";
+menu_options[1] = "Debug Room";
 menu_options[2] = "Quit";
 
 menu_select = 0;

@@ -58,11 +58,11 @@ part_type_alpha2(global.p_spark, 1, 0);
 
 global.p_line = part_type_create();
 part_type_shape(global.p_line, pt_shape_line);
-part_type_scale(global.p_line, 6, 4);
+part_type_scale(global.p_line, global.width * 0.6, 4);
 
 p_line2 = part_type_create();
 part_type_shape(p_line2, pt_shape_line);
-part_type_scale(p_line2, 6, 4);
+part_type_scale(p_line2, global.width * 0.6, 4); // 10->6
 part_type_alpha2(p_line2, 1, 0);
 part_type_speed(p_line2, 2, 2, 2, 0);
 part_type_life(p_line2, 25, 30);
@@ -72,22 +72,43 @@ part_type_death(global.p_line, 1, p_line2);
 // Initialize block holder
 global.held_block = -1;
 
+// States
+global.fall_speed = 1;
+global.level = 0;
+
+global.combo = -1;
+global.tspin = false;
+global.tspinmini = false;
+global.b2b = false;
+
+global.game_over = false;
+
+enum successful_move {
+    none = -1,
+    left_right = 0,
+    soft_drop = 1,
+    hard_drop = 2,
+    rotation = 3,
+    kick = 4
+}
+
+enum tspin_check {
+	none = -1,
+	tspin = 0,
+	mini = 1,
+}
+
 // Stats
 global.singles = 0;
 global.doubles = 0;
 global.triples = 0;
 global.quadruples = 0;
 global.total_lines = 0;
-global.level = 0;
-global.combo = -1;
-global.tspin = false;
-global.tspinmini = false;
-
-global.b2b = false;
 
 // Intialize block spawner
 global.bag = ds_list_create();
 
+// Visuals
 scoreFade = 0;
 
 // Generate a bag

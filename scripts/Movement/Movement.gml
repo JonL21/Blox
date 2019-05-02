@@ -41,7 +41,7 @@ if keyboard_check_pressed(global.C_hard_drop) {
     exit;
 }
 // Move block one unit horizontally
-else if keyboard_check_pressed(global.C_left) && !CC(x - 32, y) {
+if keyboard_check_pressed(global.C_left) && !CC(x - 32, y) {
     last_move = successful_move.left_right;
     x -= 32; 
     if lockdown && alarm[1] > 0 && lock_cancels != 0 {
