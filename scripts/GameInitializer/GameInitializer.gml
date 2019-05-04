@@ -77,8 +77,6 @@ global.fall_speed = 1;
 global.level = 0;
 
 global.combo = -1;
-global.tspin = false;
-global.tspinmini = false;
 global.b2b = false;
 
 global.game_over = false;
@@ -98,7 +96,13 @@ enum tspin_check {
 	mini = 1,
 }
 
+enum callout_type {
+	line = 0,
+	combo = 1,
+}
+
 // Stats
+score = 0;
 global.singles = 0;
 global.doubles = 0;
 global.triples = 0;

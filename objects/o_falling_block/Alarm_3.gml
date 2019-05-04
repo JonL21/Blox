@@ -1,4 +1,4 @@
-/// @description Compute score/Push lines down
+/// @description Push lines down
 
-script_execute(ScoreAdder);
 script_execute(LinePusher);
+alarm[4] = 1;

@@ -20,7 +20,3 @@ for (var i = highest - 1; i < ds_grid_height(global.playfield); i++) {
         }
     }
 }
-
-part_emitter_destroy_all(global.par_sys);
-with o_spawner alarm_set(1, 5);
-instance_destroy();

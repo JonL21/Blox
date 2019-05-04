@@ -2,7 +2,7 @@
     "id": "db6e1e77-2c17-49b0-98a7-e28fb5a45966",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "o_line_caller",
+    "name": "o_callout",
     "eventList": [
         {
             "id": "b9df58a6-71fa-4b54-ae65-2ec6938cf890",
@@ -42,16 +42,6 @@
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 2,
             "eventtype": 2,
-            "m_owner": "db6e1e77-2c17-49b0-98a7-e28fb5a45966"
-        },
-        {
-            "id": "579849ec-7d3b-47a6-9558-b6ed74c35d2a",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 0,
             "m_owner": "db6e1e77-2c17-49b0-98a7-e28fb5a45966"
         },
         {
@@ -175,9 +165,51 @@
             "value": "1",
             "varName": "size",
             "varType": 0
+        },
+        {
+            "id": "0361d249-cec5-4162-a9fb-9ce67028997f",
+            "modelName": "GMObjectProperty",
+            "mvc": "1.0",
+            "listItems": null,
+            "multiselect": false,
+            "rangeEnabled": false,
+            "rangeMax": 10,
+            "rangeMin": 0,
+            "resourceFilter": 1023,
+            "value": "c_white",
+            "varName": "textColour",
+            "varType": 7
+        },
+        {
+            "id": "c62078e5-8c12-4312-a488-7415633802d4",
+            "modelName": "GMObjectProperty",
+            "mvc": "1.0",
+            "listItems": null,
+            "multiselect": false,
+            "rangeEnabled": false,
+            "rangeMax": 10,
+            "rangeMin": 0,
+            "resourceFilter": 1023,
+            "value": "callout_type.line",
+            "varName": "type",
+            "varType": 1
+        },
+        {
+            "id": "f126ad99-a1b3-4633-b390-9eebb9d3d164",
+            "modelName": "GMObjectProperty",
+            "mvc": "1.0",
+            "listItems": null,
+            "multiselect": false,
+            "rangeEnabled": false,
+            "rangeMax": 10,
+            "rangeMin": 0,
+            "resourceFilter": 1023,
+            "value": "scoreFont",
+            "varName": "font",
+            "varType": 5
         }
     ],
     "solid": false,
-    "spriteId": "00000000-0000-0000-0000-000000000000",
+    "spriteId": "1a77f0eb-69dd-4164-854a-53b897822c82",
     "visible": true
 }
