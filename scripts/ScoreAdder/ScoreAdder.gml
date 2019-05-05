@@ -17,7 +17,7 @@ switch cleared_lines {
         if tspin_type == tspin_check.tspin sum += 100;
         else if tspin_type == tspin_check.mini sum += 400;
 		global.combo = -1;
-        global.b2b = false;
+        //global.b2b = false;
         break;
     case 1:
 		if string_length(output) == 0 output += "Single";

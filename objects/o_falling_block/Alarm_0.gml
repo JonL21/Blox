@@ -2,13 +2,14 @@
 if solid exit;
 
 // Check if topped off
-if CC(x, y) {
+if CC(0, 0) {
 	global.game_over = true;
 	alarm_set(1, 0);
 	exit;
 }
-if !CC(x, y + 32) {
+if !CC(0, 32) {
     y += 32;
+	script_execute(UpdateTilePositions())
 }
 else {
     lockdown = true;

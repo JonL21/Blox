@@ -4,7 +4,7 @@
     "mvc": "1.12",
     "name": "spr_O",
     "For3D": false,
-    "HTile": false,
+    "HTile": true,
     "VTile": false,
     "bbox_bottom": 63,
     "bbox_left": 0,

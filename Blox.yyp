@@ -335,6 +335,14 @@
             }
         },
         {
+            "Key": "5171aa33-e1e6-4114-8803-2bb9777b2db7",
+            "Value": {
+                "id": "1565540f-1cb0-4cae-aa7f-1667ed5d6bac",
+                "resourcePath": "scripts\\KickI\\KickI.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "517921a9-2d8f-4829-b524-074a88647042",
             "Value": {
                 "id": "e266136f-faa9-446e-b463-b85dde3bce58",
@@ -516,6 +524,22 @@
                 "id": "3e216b17-d8a4-4902-9177-6c2202e7470b",
                 "resourcePath": "sprites\\spr_Z\\spr_Z.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a1852a3a-4a29-4d59-909d-b3b2a782c1f0",
+            "Value": {
+                "id": "dd1f8a62-77bf-42f9-a081-f5d88b3f2a10",
+                "resourcePath": "scripts\\Kick\\Kick.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "a39cc9ba-abc7-436e-9bf4-29ba17ffc23f",
+            "Value": {
+                "id": "2efc995f-3260-4525-8bad-a6a6647d8d8b",
+                "resourcePath": "scripts\\UpdateTilePositions\\UpdateTilePositions.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -743,7 +767,10 @@
         "40212a4b-c81f-4c20-903c-7618b4fceb3a",
         "0de59172-9717-4dbd-9141-25fb91943455",
         "0d2d6e71-8833-4e97-852b-b6c2cb03c991",
+        "a1852a3a-4a29-4d59-909d-b3b2a782c1f0",
+        "5171aa33-e1e6-4114-8803-2bb9777b2db7",
         "04af9c00-0e59-4982-8896-3b791c8b99df",
+        "a39cc9ba-abc7-436e-9bf4-29ba17ffc23f",
         "9c72479d-9d7a-4b83-bdb9-edc65eefff48",
         "2c917f82-5d6e-40a6-8a30-f7ee68fbc806",
         "cd1bf0c5-b775-4cc7-bc72-6883cd11c9cd",
