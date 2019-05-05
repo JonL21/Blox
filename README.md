@@ -8,6 +8,11 @@ A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
 * Animations!
 
 ## Changelog
+### May 5, 2019
+* Revamped collision system and rotation system
+	* Collision system now considers position of each tile of block rather than origin of block
+	* Rotation system now properly adheres to kick translations of SRS
+
 ### May 4, 2019
 * Implemeted improved callout system
 	* Object that handles how combo/line clear callouts are handled
