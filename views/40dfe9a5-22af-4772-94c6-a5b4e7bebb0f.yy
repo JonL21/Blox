@@ -14,8 +14,11 @@
         "9c72479d-9d7a-4b83-bdb9-edc65eefff48",
         "2c917f82-5d6e-40a6-8a30-f7ee68fbc806",
         "cd1bf0c5-b775-4cc7-bc72-6883cd11c9cd",
+        "758ee5f4-3229-4d29-820f-cb562622854c",
         "126e01fd-af5e-4d7b-928e-ea1e84130184",
-        "b4a403e6-b6cd-479e-a421-013fbc7c3f60"
+        "340bd394-d1f0-41c3-bf15-eb3cde3e6af5",
+        "b4a403e6-b6cd-479e-a421-013fbc7c3f60",
+        "309ca3eb-f4cf-4d59-b210-b7675c78024b"
     ],
     "filterType": "GMScript",
     "folderName": "Block Specific",

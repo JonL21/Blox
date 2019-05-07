@@ -1,8 +1,8 @@
 {
-    "id": "21863be2-c9d8-4fcd-b966-e020323de61d",
+    "id": "309ca3eb-f4cf-4d59-b210-b7675c78024b",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "GameEnder",
+    "name": "CalculateSpeed",
     "IsCompatibility": false,
     "IsDnD": false
 }

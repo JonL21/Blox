@@ -1,9 +1,10 @@
 /// @description  Local Variables
 
 // Available Options
-menu_options[0] = "Play";
-menu_options[1] = "Debug Room";
-menu_options[2] = "Quit";
+menu_options[0] = "Marathon";
+menu_options[1] = "Ultra";
+menu_options[2] = "Sprint";
+menu_options[3] = "Quit";
 
 menu_select = 0;
 

@@ -73,50 +73,64 @@ part_type_death(global.p_line, 1, p_line2);
 global.held_block = -1;
 
 // States
-global.fall_speed = 1;
-global.level = 0;
+global.level = 1; // Visual indicator for fall speed
+global.combo = -1; // How many consecutive line clears
+global.b2b = false; // Chance indicator for consecutive T-Spins/Quadruples
+global.game_over = false; // If game is over
+global.game_clear = false; // If game mode end condition cleared
+global.hold_available = true; // If a block can be swapped from hold
+global.lock_delay = 30; // How many frames before block solidifies
+global.lock_cancels = 15; // How many successful moves/rotations can delay block lock
 
-global.combo = -1;
-global.b2b = false;
+global.timer = 0;
+if global.game_mode == mode.ultra
+	global.timer = 3 * game_get_speed(gamespeed_fps);
 
-global.game_over = false;
-
+// Enum for last made move, used to check for T-Spins
 enum successful_move {
     none = -1,
     left_right = 0,
-    soft_drop = 1,
-    hard_drop = 2,
+    soft_drop = 1, // unused
+    hard_drop = 2, // unused
     rotation = 3,
-    kick = 4
+    kick = 4,
+	shift = 5,
 }
 
+// Enum for the type of T-Spin, used to determine points
 enum tspin_check {
 	none = -1,
 	tspin = 0,
 	mini = 1,
 }
 
+// Enum for type of callout, to handle each group individually
 enum callout_type {
 	line = 0,
 	combo = 1,
+	points = 2,
 }
 
-// Stats
+// Statistics
 score = 0;
-global.singles = 0;
-global.doubles = 0;
-global.triples = 0;
-global.quadruples = 0;
-global.total_lines = 0;
+global.stats = ds_map_create();
+global.strstats = // For ensuring order
+["Total Lines Cleared",
+"Singles","Doubles","Triples","Quadruples","All Clears",
+"T-Spins", "T-Spin Minis", 
+"T-Spin Singles", "T-Spin Doubles", "T-Spin Triples",
+"Back to Backs"]
+for (var i = 0; i < array_length_1d(global.strstats); i++) {
+	global.stats[? global.strstats[i]] = 0;
+}
 
 // Intialize block spawner
 global.bag = ds_list_create();
 
 // Visuals
 scoreFade = 0;
+scoreBasePos = [global.border[1] + 128, global.border[3] + 32]; // Where score/stats start displaying from
+global.callouts_base_pos = [global.border[0] - 8, global.border[3] + 100]; // Where callouts start displaying from
 
 // Generate a bag
 alarm_set(0, 1);
-
-// Drop a block
-alarm_set(1, 5);

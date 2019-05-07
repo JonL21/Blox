@@ -23,7 +23,18 @@ with iid {
 		case spr_J: tile_pos = [[x-16,y-16],[x-48,y-16],[x-48,y-48],[x+16,y-16]]; break;
 		case spr_L: tile_pos = [[x-16,y-16],[x-48,y-16],[x+16,y-16],[x+16,y-48]]; break;
 	}
-	alarm_set(0, 60 / global.fall_speed);
+	if CC(0, 0) {
+		if CC(0, -32) {
+			global.game_over = true;
+			instance_create(room_width / 2, room_height / 2, o_pause);
+			alarm[1] = 1;
+		}
+		else {
+			y -= 32;
+			UpdateTilePositions();	
+		}
+	}
+	alarm_set(0, CalculateSpeed());
 }
 
 // Add new blocks to bag if emptying out

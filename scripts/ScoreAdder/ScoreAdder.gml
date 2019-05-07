@@ -1,110 +1,79 @@
 /// @description  ScoreAdder();
 
 var sum = 0;
-var output = ""; // To send to callout
-
-switch tspin_type {
-	case tspin_check.tspin:
-		output += "T-Spin";
-		break;
-	case tspin_check.mini:
-		output += "T-Spin Mini";
-		break;
-}
 
 switch cleared_lines {
     case 0:
-        if tspin_type == tspin_check.tspin sum += 100;
-        else if tspin_type == tspin_check.mini sum += 400;
+        if tspin_type == tspin_check.tspin sum += 400;
+        else if tspin_type == tspin_check.mini sum += 100;
 		global.combo = -1;
-        //global.b2b = false;
         break;
     case 1:
-		if string_length(output) == 0 output += "Single";
-		else output += " Single";
-        global.singles++;
-        if tspin_type == tspin_check.tspin { 
-            if global.b2b {
-                sum += max(global.combo * 500, 500);
-                with o_spawner alarm[2] = 1;
-				output = "BACK TO BACK\n" + output;
-            }
-            global.b2b = true;
-            sum += 800;
-            break;
-        }
-        else if tspin_type == tspin_check.mini {
-            if global.b2b {
-                sum += max(global.combo * 500, 500);
-                with o_spawner alarm[2] = 1;
-				output = "BACK TO BACK\n" + output;
-            }
-            global.b2b = true;
-            sum += 200;
-            break;
-        }
-        else sum += 100;
-        global.b2b = false;
+        if tspin_type == tspin_check.tspin
+			sum += 800;
+        else if tspin_type == tspin_check.mini
+			sum += 200;
+        else
+			sum += 100;
         break;
     case 2:
-		if string_length(output) == 0 output += "Double";
-		else output += " Double";
-        global.doubles++;
-        if tspin_type == tspin_check.tspin {
-            if global.b2b {
-                sum += max(global.combo * 500, 500);
-                with o_spawner alarm[2] = 1;
-				output = "BACK TO BACK\n" + output;
-            }
-            global.b2b = true;
-            sum += 1200;
-            break;
-        }
-        else sum += 300;
-        global.b2b = false;
+        if tspin_type == tspin_check.tspin
+			sum += 1200;
+		else
+			sum += 300;
         break;
     case 3:
-		if string_length(output) == 0 output += "Triple";
-		else output += " Triple";
-        global.triples++;
-        if tspin_type == tspin_check.tspin {
-            if global.b2b {
-                sum += max(global.combo * 500, 500);
-                with o_spawner alarm[2] = 1;
-				output = "BACK TO BACK\n" + output;
-            }
-            global.b2b = true;
-            sum += 1600;
-            break;
-        }
-        else sum += 500;
-        global.b2b = false;
+        if tspin_type == tspin_check.tspin
+			sum += 1600;
+		else
+			sum += 500;
         break;
     case 4:
-		output = "Quadruple";
-        if global.b2b {
-            sum += max(global.combo * 500, 500);
-            with o_spawner alarm[2] = 1;
-			output = "BACK TO BACK\n" + output;
-        }
-        global.b2b = true;
-        global.quadruples++;
-        sum += 800;
+		sum += 800;
         break;
 }
 
-// PERFECT CLEAR
+UpdateStats();
+
+// Constructing output for callout
+var output = "";
+switch tspin_type {
+	case tspin_check.tspin:
+		output += "T-Spin ";
+		break;
+	case tspin_check.mini:
+		output += "T-Spin Mini ";
+		break;
+}
+switch cleared_lines {
+	case 1: output += "Single"; break;	
+	case 2: output += "Double"; break;	
+	case 3: output += "Triple"; break;	
+	case 4: output += "Quadruple"; break;	
+}
+
+// BACK TO BACK Bonus
+if global.b2b && (tspin_type != tspin_check.none || cleared_lines == 4) {
+    sum += sum + (sum * 0.5);
+	output = "BACK TO BACK\n" + output;
+}
+// Setting B2B chance indicator
+else if tspin_type != tspin_check.none || cleared_lines == 4 global.b2b = true;
+else if cleared_lines >= 1 global.b2b = false;
+
+// PERFECT CLEAR Bonus
 if ds_grid_get_max(global.playfield, 0, 0, global.width - 1, global.height * 2 - 1) == -1 {
-	sum += 1500;
+	switch cleared_lines {
+		case 1: sum += 800; break;
+		case 2: sum += 1000; break;
+		case 3: sum += 1800; break;
+		case 4: sum += 2000; break;
+	}
 	output = "ALL CLEAR";
 }
 
-// Add combo multiplier
-sum += max(global.combo * 50, 0);
-
-var base_x = global.border[1] + 128;
-var base_y = global.border[3] + 256;
-
+var base_x = global.callouts_base_pos[0];
+var base_y = global.callouts_base_pos[1];
 // Callout Combo
 with o_callout {
 	if type == callout_type.combo instance_destroy();
@@ -127,7 +96,6 @@ if global.combo > 0 {
 		}
 	}
 }
-
 // Callout Line Clear Type
 if string_length(output) > 0 {
 	with instance_create(base_x, base_y, o_callout) {
@@ -142,5 +110,10 @@ if string_length(output) > 0 {
 	}
 }
 
+// Combo Bonus
+sum += max(global.combo * 50, 0);
+
+// Hard Drop Bonus
+sum += drop_points;
+
 score += sum;
-global.total_lines += cleared_lines;

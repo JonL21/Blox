@@ -1,5 +1,4 @@
 /// @description DoSomething()
-// You can write your code in this editor
 
 switch menu_select {
 	case 0:

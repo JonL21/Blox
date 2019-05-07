@@ -3,11 +3,28 @@ A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
 
 ## Features
 * SRS Rotation System
-* Score
-* Combo
+* Classic Game Modes:
+	* Marathon - clear 150 lines as fast as possible
+	* Ultra - get as much points possible in 3 minutes
+	* Sprint - clear 40 lines as fast as possible
 * Animations!
 
 ## Changelog
+### May 6, 2019
+* Added Classic Game Modes
+* Improved Pause Menu
+	* Doubles as game over menu, showing final score and time
+	* Now pauses when window becomes out of focus
+* Cleaned up UI
+	* Refactored most of hard-coded text positions
+	* Added countdown before game starts
+* Improved Lockdown System
+	* Lock cancels, lock delay
+* Other Improvements
+	* Statistics now stored in a map to allow for extensibility
+	* Cleaned up score calculating code
+	* Removed unused debug room
+
 ### May 5, 2019
 * Revamped collision system and rotation system
 	* Collision system now considers position of each tile of block rather than origin of block
@@ -28,9 +45,13 @@ A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
 * Introduction of different display of line clears
 
 ## To-Do
-* Full gameplay functionality
-	* Game objectives (classic Marathon, Ultra, Sprint modes)
-* Clean UI
+* Add some backgrounds
 * Sounds
 * Options Menu
 	* Edit Keybinds
+	* Edit Gameplay elements?
+	* Show/Hide Statistics 
+* High Scores Leadboard/Database
+* Proper commenting of code
+* Refactoring of code
+* Remove dependency on compatability scripts

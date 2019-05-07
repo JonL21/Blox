@@ -27,7 +27,7 @@ script_execute(UpdateTilePositions());
     NOTE: Translations on y-axis are reversed as room origin starts at top left corner.
 */
 
-kicked = false;
+var kicked = false;
 
 // Kick Translations for I
 var kickI0R = [[0,0],[-2,0],[1,1],[-2,-1],[1,2]];
@@ -117,19 +117,31 @@ else if CC(0, 0) >= 1 && keyboard_check_pressed(global.C_rotate_right) {
 	if !kicked next_state = orig_state;
 }
 
+var frame_rotation = successful_move.none;
+
 if kicked {
 	last_move = successful_move.kick;
+	frame_rotation = successful_move.kick;
 	script_execute(UpdateTilePositions());
 }
 else if orig_state != next_state {
     last_move = successful_move.rotation;
+	frame_rotation = successful_move.rotation;
 }
 else {
 	image_index = orig_state;
 	script_execute(UpdateTilePositions());
 }
 
-if (keyboard_lastkey == global.C_rotate_left || keyboard_lastkey == global.C_rotate_right) && lockdown && alarm[1] > 0 && lock_cancels != 0 {
-    lock_cancels = max(lock_cancels - 1, 0);
-    alarm[1] = 30;
+if (frame_rotation == successful_move.rotation || frame_rotation = successful_move.kick) {
+	if lockdown && lock_cancels != 0 {
+	    lock_cancels = max(lock_cancels - 1, 0);
+		if !CC(0, 32) {
+			lockdown = false;
+			alarm_set(1, -1);
+			alarm_set(0, CalculateSpeed());
+		}
+		else alarm_set(1, lock_delay);
+	}
+	else if lock_cancels == 0 alarm_set(1, 1);
 }

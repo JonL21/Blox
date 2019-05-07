@@ -143,6 +143,14 @@
             }
         },
         {
+            "Key": "21863be2-c9d8-4fcd-b966-e020323de61d",
+            "Value": {
+                "id": "a4087a38-f900-4d7a-88fc-15f7b2f58f1b",
+                "resourcePath": "scripts\\GameEnder\\GameEnder.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "242930be-3473-4447-bcbc-74bbdfb0b3a1",
             "Value": {
                 "id": "ad0ef688-284e-4b3d-adb1-da6c10f00f88",
@@ -231,6 +239,14 @@
             }
         },
         {
+            "Key": "2d8d2cb9-fa84-4396-a346-33a55703a6f7",
+            "Value": {
+                "id": "d16e7c66-e5f4-4178-84d2-bc9a3aba29f1",
+                "resourcePath": "fonts\\headsUpFont\\headsUpFont.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "2ef9a375-97ce-4556-91ad-6f91d3f6b309",
             "Value": {
                 "id": "2ff4437c-12fe-4545-82ea-51c9d8e2a893",
@@ -239,11 +255,27 @@
             }
         },
         {
+            "Key": "309ca3eb-f4cf-4d59-b210-b7675c78024b",
+            "Value": {
+                "id": "faafd670-a925-4635-8ebc-0a8a4f30d5cc",
+                "resourcePath": "scripts\\CalculateSpeed\\CalculateSpeed.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3222b73e-22d8-40e7-8b05-789070b75c9e",
             "Value": {
                 "id": "8e0fa814-fb5a-4419-804a-ac45d3b81bd3",
                 "resourcePath": "views\\3222b73e-22d8-40e7-8b05-789070b75c9e.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "340bd394-d1f0-41c3-bf15-eb3cde3e6af5",
+            "Value": {
+                "id": "0be05ffe-0f57-4870-b9ea-62f7743b2bd3",
+                "resourcePath": "scripts\\UpdateStats\\UpdateStats.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -679,6 +711,14 @@
             }
         },
         {
+            "Key": "eff2ab2c-8419-4342-ab09-8b3ea47bbddc",
+            "Value": {
+                "id": "5a4b2b5e-1fac-401d-9d24-4040dab51c67",
+                "resourcePath": "objects\\o_game_countdown\\o_game_countdown.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "f333f113-4ad0-4899-8eec-43fb7b8d9ba6",
             "Value": {
                 "id": "d167189a-9b07-49df-a592-0150616d3456",
@@ -735,14 +775,6 @@
             }
         },
         {
-            "Key": "f9b5951f-ad05-497e-b954-82816a880461",
-            "Value": {
-                "id": "a8e6cf43-f6dd-41da-908e-a551c69216e4",
-                "resourcePath": "scripts\\GameEnder\\GameEnder.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "fa4a3a87-9dad-471e-8d34-e1f8175eb10e",
             "Value": {
                 "id": "3f19c4fe-7b04-44e5-a2b6-2d03e6a0000d",
@@ -763,7 +795,6 @@
         "42b98813-8cf2-414c-81e2-062ce5d41b11",
         "c702e3a4-6d39-4e69-ae0d-6a6a48bb61c0",
         "297baf89-bc4a-4192-a3aa-6631d4a03d0c",
-        "f9b5951f-ad05-497e-b954-82816a880461",
         "40212a4b-c81f-4c20-903c-7618b4fceb3a",
         "0de59172-9717-4dbd-9141-25fb91943455",
         "0d2d6e71-8833-4e97-852b-b6c2cb03c991",
@@ -774,8 +805,11 @@
         "9c72479d-9d7a-4b83-bdb9-edc65eefff48",
         "2c917f82-5d6e-40a6-8a30-f7ee68fbc806",
         "cd1bf0c5-b775-4cc7-bc72-6883cd11c9cd",
+        "758ee5f4-3229-4d29-820f-cb562622854c",
         "126e01fd-af5e-4d7b-928e-ea1e84130184",
+        "340bd394-d1f0-41c3-bf15-eb3cde3e6af5",
         "b4a403e6-b6cd-479e-a421-013fbc7c3f60",
+        "309ca3eb-f4cf-4d59-b210-b7675c78024b",
         "680cf3e5-d9bb-48d7-b08c-1c0fb957511d",
         "786b4cb0-e935-4ed4-892c-0ba90d0b02cc",
         "f83a7e0f-636b-4969-bdc3-759d9d143887",
@@ -793,7 +827,7 @@
         "018db69a-8571-455d-8669-7e76547ed3b4",
         "69203ada-38dc-48b4-85f7-d21ace467d71",
         "2454e747-6ebc-4547-9274-c2a0b3ff98e6",
-        "758ee5f4-3229-4d29-820f-cb562622854c"
+        "21863be2-c9d8-4fcd-b966-e020323de61d"
     ],
     "tutorial": ""
 }

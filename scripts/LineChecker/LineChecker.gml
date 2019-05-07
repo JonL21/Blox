@@ -52,7 +52,4 @@ if update {
     }
     alarm[3] = 8;
 }
-else {
-	with o_callout if type == callout_type.combo alarm_set(fadeType, 1);
-	alarm[4] = 1;
-}
+else alarm[4] = 1;

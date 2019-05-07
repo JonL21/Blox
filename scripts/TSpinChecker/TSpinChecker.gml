@@ -19,7 +19,7 @@
 
 if argument[0] == spr_T {
 	// Count amount of occupied corners
-    occupied_corner = 0;
+    var occupied_corner = 0;
 	var pox = argument[2];
 	var poy = argument[3];
     if collision_point(pox - 32, poy - 32, o_square, false, false) || collision_point(pox - 32, poy - 32, o_grid, false, false) occupied_corner++; // Top left
@@ -28,7 +28,7 @@ if argument[0] == spr_T {
     if collision_point(pox + 32, poy + 32, o_square, false, false) || collision_point(pox + 32, poy + 32, o_grid, false, false) occupied_corner++; // Bottom right
     if occupied_corner >= 3 {
 		// Determine if corners adjacent to pointy end of t-block occupied
-		occupied_point = false;
+		var occupied_point = false;
 		var move = argument[4];
 		var img = argument[1];
 		var cleared = argument[5];
