@@ -1,4 +1,6 @@
-/// @description updateTilePositions(spr, idx)
+/// @func UpdateTilePositions()
+/// @desc Updates each position of each tile of block
+
 switch sprite_index {
 	case spr_O: tile_pos = [[x,y],[x,y-32],[x-32,y],[x-32,y-32]]; break;
 	case spr_I: 

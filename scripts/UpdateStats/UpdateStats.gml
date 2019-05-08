@@ -1,3 +1,6 @@
+/// @func UpdateStats()
+/// @desc Update statistics where applicable
+
 switch cleared_lines {
 	case 0:
 		if tspin_type == tspin_check.mini

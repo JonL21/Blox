@@ -1,12 +1,15 @@
-/// @description  HoldBlock()
+/// @func HoldBlock()
+/// @desc Logic for holding/swaping hold block
 
 if global.hold_available && keyboard_check_pressed(global.C_hold) {
     global.hold_available = false;
+	// If no hold block, hold this block('s sprite), and spawn new block
     if global.held_block == -1 {
         global.held_block = sprite_index;
         with o_spawner alarm[1] = 1;
         instance_destroy();
     }
+	// Else swap block (sprites) and reset lockdown variables and reset position to spawn
     else {
         // Swap sprites
         var temp = global.held_block;

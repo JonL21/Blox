@@ -1,6 +1,13 @@
-/// @description  TSpinChecker(sprite_index, image_index, xpos, ypos, last_move, lines_cleared);
+/// @func TSpinChecker(sprite_index, image_index, xpos, ypos, last_move, lines_cleared);
+/// @desc Checks for T-Spins
+/// @arg {id} sprite index the type of block 
+/// @arg {id} image index the rotation state
+/// @arg {Integer} x x origin of block
+/// @arg {Integer} y y origin of block
+/// @arg {Integer} last_move the last move
+/// @arg {Integer} lines_cleared the number of lines cleared 
 
-/* Check for T-Spin
+/*
     Criteria:
     1 - Last successful move was a rotation
     2 - Three of the four adjacent corners around of the t-block are occupied by a wall/block

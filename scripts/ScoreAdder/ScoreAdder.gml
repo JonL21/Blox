@@ -1,4 +1,5 @@
-/// @description  ScoreAdder();
+/// @func ScoreAdder()
+/// @desc Calculates the points earned after placing block
 
 var sum = 0;
 
@@ -79,7 +80,7 @@ with o_callout {
 	if type == callout_type.combo instance_destroy();
 }
 if global.combo > 0 {
-	with instance_create(base_x, base_y, o_callout) {
+	with instance_create_layer(base_x, base_y, "Instances", o_callout) {
 		type = callout_type.combo;
 		callout = "Combo: " + string(global.combo);
 		maxSize = 1;
@@ -98,7 +99,7 @@ if global.combo > 0 {
 }
 // Callout Line Clear Type
 if string_length(output) > 0 {
-	with instance_create(base_x, base_y, o_callout) {
+	with instance_create_layer(base_x, base_y, "Instances", o_callout) {
 		type = callout_type.line;
 		if output == "ALL CLEAR" {
 			textColour = c_fuchsia;
@@ -116,4 +117,4 @@ sum += max(global.combo * 50, 0);
 // Hard Drop Bonus
 sum += drop_points;
 
-score += sum;
+global.points += sum;

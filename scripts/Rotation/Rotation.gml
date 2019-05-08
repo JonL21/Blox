@@ -1,4 +1,5 @@
-/// @description  Rotation
+/// @func Rotation()
+/// @desc Rotation logic
 
 // Rotate by changing image index
 var orig_state = image_index;
@@ -13,11 +14,12 @@ else if keyboard_check_pressed(global.C_rotate_right) {
 }
 else exit;
 
+// "Rotate" block and update tile positions
 image_index = next_state;
-script_execute(UpdateTilePositions());
+UpdateTilePositions();
 
-// If collision detected, attempt wall kick
 /*
+	If collision detected, attempt wall kick
     ROTATION GUIDE
     0 - Spawn state
     L - State resulting from CCW rotation from 0
@@ -42,44 +44,36 @@ var off2 = [[0,0],[0,0],[0,0],[0,0],[0,0]];
 var offL = [[0,0],[-1,0],[-1,-1],[0,2],[-1,2]];
 
 // Kicks for CCW
-if CC(0, 0) >= 1 && keyboard_check_pressed(global.C_rotate_left) {
+if CC(0, 0) && keyboard_check_pressed(global.C_rotate_left) {
     // Wall kicks for I block
     if sprite_index == spr_I {
         switch image_index {
             case 0: // R -> 0
-				kicked = KickI(kickI0R, true);
-                break;
+				kicked = KickI(kickI0R, true); break;
             case 1: // 2 -> R
-				kicked = KickI(kickIR2, true);
-                break;
+				kicked = KickI(kickIR2, true); break;
             case 2: // L -> 2
-				kicked = KickI(kickI2L, true);
-                break;
+				kicked = KickI(kickI2L, true); break;
             case 3: // 0 -> L
-				kicked = KickI(kickIL0, true);
-                break;
+				kicked = KickI(kickIL0, true); break;
         }
     }
     // Wall kicks for J/L/S/T/Z blocks
     else if sprite_index != spr_O {
         switch image_index {
             case 0: // R -> 0
-                kicked = Kick(offR, off0);
-                break;
+                kicked = Kick(offR, off0); break;
             case 1: // 2 -> R
-                kicked = Kick(off2, offR);
-                break;
+                kicked = Kick(off2, offR); break;
             case 2: // L -> 2
-                kicked = Kick(offL, off2);
-                break;
+                kicked = Kick(offL, off2);  break;
             case 3: // 0 -> L
-                kicked = Kick(off0, offL);
-                break;
+                kicked = Kick(off0, offL); break;
         }
     }
 	if !kicked next_state = orig_state;
 }
-else if CC(0, 0) >= 1 && keyboard_check_pressed(global.C_rotate_right) {
+else if CC(0, 0) && keyboard_check_pressed(global.C_rotate_right) {
     // Wall kicks for I block
     if sprite_index == spr_I {
         switch image_index {
@@ -117,12 +111,12 @@ else if CC(0, 0) >= 1 && keyboard_check_pressed(global.C_rotate_right) {
 	if !kicked next_state = orig_state;
 }
 
-var frame_rotation = successful_move.none;
+var frame_rotation = successful_move.none; // Used for lockdown system
 
 if kicked {
 	last_move = successful_move.kick;
 	frame_rotation = successful_move.kick;
-	script_execute(UpdateTilePositions());
+	UpdateTilePositions();
 }
 else if orig_state != next_state {
     last_move = successful_move.rotation;
@@ -130,18 +124,20 @@ else if orig_state != next_state {
 }
 else {
 	image_index = orig_state;
-	script_execute(UpdateTilePositions());
+	UpdateTilePositions();
 }
 
-if (frame_rotation == successful_move.rotation || frame_rotation = successful_move.kick) {
+if frame_rotation == successful_move.rotation || frame_rotation = successful_move.kick {
+	// Reset lock delay, decrement lock cancels
 	if lockdown && lock_cancels != 0 {
 	    lock_cancels = max(lock_cancels - 1, 0);
 		if !CC(0, 32) {
 			lockdown = false;
-			alarm_set(1, -1);
-			alarm_set(0, CalculateSpeed());
+			alarm[1] = -1;
+			alarm[0] = CalculateSpeed();
 		}
-		else alarm_set(1, lock_delay);
+		else alarm[1] = lock_delay;
 	}
-	else if lock_cancels == 0 alarm_set(1, 1);
+	// Force block end
+	else if lock_cancels == 0 alarm[1] = 1;
 }

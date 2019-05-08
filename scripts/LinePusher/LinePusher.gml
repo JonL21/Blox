@@ -1,22 +1,13 @@
-/// @description  LinePusher();
+/// @func LinePusher()
+/// @desc Push lines down after lines are cleared
 
-// Push lines in internal grid
+// Push lines in internal/visual grid
 var highest = ds_grid_height(global.playfield);
 for (; highest >= 0; highest--) {
     if ds_grid_get_max(global.playfield, 0, 0, global.width - 1, highest - 1) == -1 break;
-    while ds_grid_get_max(global.playfield, 0, highest, global.width - 1, highest) == -1 
+    while ds_grid_get_max(global.playfield, 0, highest, global.width - 1, highest) == -1 {
         ds_grid_set_grid_region(global.playfield, global.playfield, 0, 0, global.width - 1, highest - 1, 0, 1);
-}
-
-instance_destroy(o_square);
-
-// Push lines on external grid
-for (var i = highest - 1; i < ds_grid_height(global.playfield); i++) {
-    for (var j = 0; j < global.width; j++) {
-        var colour = ds_grid_get(global.playfield, j, i);
-        if colour != -1 && i >= 20 {
-            var square = instance_create_layer(global.border[0] + j * 32, (i - global.height) * 32 + global.border[3], "Instances", o_square);
-            square.image_index = colour;
-        }
-    }
+		var _y = (highest - global.height) * 32 + global.border[3];
+		with o_square if y < _y y += 32;
+	}
 }

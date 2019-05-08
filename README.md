@@ -7,9 +7,17 @@ A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
 	* Marathon - clear 150 lines as fast as possible
 	* Ultra - get as much points possible in 3 minutes
 	* Sprint - clear 40 lines as fast as possible
+* Local Leaderboards
+* Custom Key Binds
 * Animations!
 
 ## Changelog
+### May 8, 2019
+* Added ability to make custom key binds in new Options menu
+* Implemented High Scores Leadboard/Database for each game mode
+* Removed dependency on compatability scripts
+* Added some background visuals to main menu
+
 ### May 6, 2019
 * Added Classic Game Modes
 * Improved Pause Menu
@@ -48,10 +56,7 @@ A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
 * Add some backgrounds
 * Sounds
 * Options Menu
-	* Edit Keybinds
 	* Edit Gameplay elements?
 	* Show/Hide Statistics 
-* High Scores Leadboard/Database
 * Proper commenting of code
 * Refactoring of code
-* Remove dependency on compatability scripts

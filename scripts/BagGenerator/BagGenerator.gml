@@ -1,21 +1,21 @@
-// BagGenerator
+/// @func BagGenerator()
+/// @desc Generate two 7-Bags if empty list, or add one 7-bag if running out
 
-// Generate two 7-Bags if empty list, or add on one bag if running out
-var ind, repeats;
-if ds_list_size(global.bag) == 0 { ind = 0; repeats = 2};
-else { ind = 7; repeats = 1; }
+var pos; // What position in list to add blocks
+var numbags; // How many 7-bags to add
+if ds_list_size(global.bag) == 0 { pos = 0; numbags = 2};
+else { pos = 7; numbags = 1; }
 
-repeat repeats {
-    var unique;
-    for (var i = 0; i < 7; i++) unique[i] = false;
+repeat numbags {
+    var unique = array_create(7, false);
     var left = 7;
     while left != 0 {
         randomize();
         while true {
-            var rannum = irandom(6);
+            var rannum = choose(blox.I, blox.J, blox.O, blox.S, blox.Z, blox.L, blox.T);
             if unique[rannum] == false {
                 unique[rannum] = true;
-                ds_list_insert(global.bag, ind, rannum);
+                ds_list_insert(global.bag, pos, rannum);
                 left--;
                 break;
             }

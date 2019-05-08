@@ -1,3 +1,3 @@
 /// @description Set...
 text = "START!";
-alarm_set(1, 1 * game_get_speed(gamespeed_fps));
+alarm[1] = 1 * game_get_speed(gamespeed_fps);

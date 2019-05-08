@@ -10,7 +10,7 @@
     "option_windows_copyright_info": "",
     "option_windows_description_info": "A Tetris clone by Jonathan Lorayes.",
     "option_windows_display_cursor": true,
-    "option_windows_display_name": "GameMaker: Studio",
+    "option_windows_display_name": "Blox",
     "option_windows_enable_steam": false,
     "option_windows_executable_name": "${project_name}",
     "option_windows_icon": "${options_dir}\\windows\\runner_icon.ico",
@@ -19,7 +19,7 @@
     "option_windows_interpolate_pixels": true,
     "option_windows_license": "${options_dir}\\windows\\installer\\license.txt",
     "option_windows_nsis_file": "${base_options_dir}\\windows\\installer\\nsis_script.nsi",
-    "option_windows_product_info": "",
+    "option_windows_product_info": "Blox",
     "option_windows_resize_window": false,
     "option_windows_save_location": 0,
     "option_windows_scale": 0,
@@ -31,7 +31,7 @@
     "option_windows_version": {
         "build": 0,
         "major": 1,
-        "minor": 0,
+        "minor": 1,
         "revision": 0
     },
     "option_windows_vsync": false

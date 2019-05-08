@@ -1,3 +1,2 @@
-/// @description  Initialize the game
-
-script_execute(GameInitializer);
+/// @description Initialize the game
+GameInitializer();

@@ -1,4 +1,3 @@
 /// @description Push lines down
-
-script_execute(LinePusher);
+LinePusher();
 alarm[4] = 1;

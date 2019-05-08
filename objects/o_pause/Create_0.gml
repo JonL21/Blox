@@ -5,15 +5,18 @@ menu_options[1] = "Restart";
 menu_options[2] = "Main Menu";
 
 menu_select = 0;
-scales = 0.5;
-for (var i = 0; i < array_length_1d(menu_options); i++) {
-    scales[i] = 0.5;
-}
+scales = array_create(array_length_1d(menu_options), 0.5);
 
 if (global.game_over) {
 	menu_options[1] = "Play Again";
     menu_select = 1;
     scales[1] = 1;
+	sb_clamp_low = x + 384;
+	sb = instance_create_depth(room_width + 256, y - 160, -10, o_scoreboard);
+	with sb {
+		game_mode = global.game_mode;
+		alarm[0] = 1;
+	}
 }
 else {
     menu_select = 0;

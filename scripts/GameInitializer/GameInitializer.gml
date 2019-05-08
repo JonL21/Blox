@@ -1,28 +1,26 @@
-// GameInitializer
+/// @func GameInitializer()
+/// @desc Declare playfield dimensions, variables shared by all instances
 
 // Define Playfield dimensions (MUST BE EVEN!)
 global.width = 10;
 global.height = 20;
 
 // Define borders; 0 - Left, 1 - Right, 2 - Floor, 3 - Ceiling
-global.border[0] = x - 32 * global.width / 2; 
-global.border[1] = x + 32 * global.width / 2;
-global.border[2] = y + 32 * (global.height + 2); // Extra two for spawning space
-global.border[3] = y + 32 * 2;
+global.border[0] = x - 32 * global.width / 2;		// Left
+global.border[1] = x + 32 * global.width / 2;		// Right
+global.border[2] = y + 32 * (global.height + 2);	// Floor, extra two rows for block spawning area
+global.border[3] = y + 32 * 2;						// Ceiling
 
-// Draw playfield with tiles
-posx = global.border[0];
-posy = y;
+// Draw Tile Layer that serves as background of playfield
+var tilelayer = layer_create(500);
+var map_id = layer_tilemap_create(tilelayer, global.border[0], global.border[3] - 64, bg_grid_tileset, global.width, global.height + 2);
 for (var i = 0; i < global.height + 2; i++) {
     for (var j = 0; j < global.width; j++) {
-        tile_add(bg_grid, 0, 0, 32, 32, posx, posy, 100);
-        posx += 32;
+        tilemap_set(map_id, 1, j, i);
     }
-    posy += 32;
-    posx = global.border[0];
 }
 
-// Spawn invisible wall border
+// Define playfield boundaries
 posx = global.border[0] - 32;
 posy = y - 32 * 8;
 repeat (2) {
@@ -50,19 +48,20 @@ global.par_sys = part_system_create();
 part_system_depth(global.par_sys, -1);
 
 // Initialize particles
-global.p_spark = part_type_create();
+global.p_spark = part_type_create(); // Hard drop particle
 part_type_shape(global.p_spark, pt_shape_spark);
 part_type_size(global.p_spark, 1, 1.5, -0.005, 0);
 part_type_gravity(global.p_spark, 0.25, 90);
 part_type_alpha2(global.p_spark, 1, 0);
 
-global.p_line = part_type_create();
+global.p_line = part_type_create(); // Line clear particle
 part_type_shape(global.p_line, pt_shape_line);
-part_type_scale(global.p_line, global.width * 0.6, 4);
+part_type_scale(global.p_line, global.width * 0.52, 4);
+part_type_life(global.p_line, 12, 12);
 
-p_line2 = part_type_create();
+var p_line2 = part_type_create();
 part_type_shape(p_line2, pt_shape_line);
-part_type_scale(p_line2, global.width * 0.6, 4); // 10->6
+part_type_scale(p_line2, global.width * 0.52, 4);
 part_type_alpha2(p_line2, 1, 0);
 part_type_speed(p_line2, 2, 2, 2, 0);
 part_type_life(p_line2, 25, 30);
@@ -81,38 +80,12 @@ global.game_clear = false; // If game mode end condition cleared
 global.hold_available = true; // If a block can be swapped from hold
 global.lock_delay = 30; // How many frames before block solidifies
 global.lock_cancels = 15; // How many successful moves/rotations can delay block lock
-
-global.timer = 0;
-if global.game_mode == mode.ultra
+global.timer = 0; // How much time has elasped
+if global.game_mode == mode.ultra // Ultra has specified time limit
 	global.timer = 3 * game_get_speed(gamespeed_fps);
 
-// Enum for last made move, used to check for T-Spins
-enum successful_move {
-    none = -1,
-    left_right = 0,
-    soft_drop = 1, // unused
-    hard_drop = 2, // unused
-    rotation = 3,
-    kick = 4,
-	shift = 5,
-}
-
-// Enum for the type of T-Spin, used to determine points
-enum tspin_check {
-	none = -1,
-	tspin = 0,
-	mini = 1,
-}
-
-// Enum for type of callout, to handle each group individually
-enum callout_type {
-	line = 0,
-	combo = 1,
-	points = 2,
-}
-
 // Statistics
-score = 0;
+global.points = 0;
 global.stats = ds_map_create();
 global.strstats = // For ensuring order
 ["Total Lines Cleared",
@@ -128,9 +101,8 @@ for (var i = 0; i < array_length_1d(global.strstats); i++) {
 global.bag = ds_list_create();
 
 // Visuals
-scoreFade = 0;
-scoreBasePos = [global.border[1] + 128, global.border[3] + 32]; // Where score/stats start displaying from
-global.callouts_base_pos = [global.border[0] - 8, global.border[3] + 100]; // Where callouts start displaying from
+scoreBasePos = [global.border[1] + 128, global.border[3] - 32]; // Where score/stats start displaying from
+global.callouts_base_pos = [global.border[0] - 8, global.border[3] + 96]; // Where callouts start displaying from
 
 // Generate a bag
-alarm_set(0, 1);
+alarm[0] = 1;

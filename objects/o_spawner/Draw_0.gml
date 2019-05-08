@@ -8,20 +8,18 @@ draw_set_halign(fa_left);
 // Draw Score
 draw_set_font(scoreFont);
 var _y = scoreBasePos[1];
-draw_text(scoreBasePos[0], _y, string("Score: " + string(score)));
+draw_text(scoreBasePos[0], _y, string("Score: " + string(global.points)));
 _y += 40;
 
 // Draw Timer
-var seconds = (global.timer % 60) >= 10 ? string(global.timer % 60) : "0" + string(global.timer % 60);
-var minutes = floor(global.timer / 60) >= 10 ? string(floor(global.timer / 60)) : "0" + string(floor(global.timer / 60));
-draw_text(scoreBasePos[0], _y, "Time: " + minutes + ":" + seconds);
+draw_text(scoreBasePos[0], _y, "Time: " + FormatTime(global.timer));
 _y += 40;
 
 // Draw Level
 if global.game_mode != mode.sprint
 	draw_text(scoreBasePos[0], _y, string("Level: " + string(global.level)));
 else
-	draw_text(scoreBasePos[0], _y, string("Lines: " + string(abs(40 - global.stats[? "Total Lines Cleared"]))));
+	draw_text(scoreBasePos[0], _y, string("Lines: " + string(max((40 - global.stats[? "Total Lines Cleared"]), 0))));
 _y += 48;
 
 // Draw Stats
@@ -33,18 +31,20 @@ for (var i = 0; i < array_length_1d(global.strstats); i++) {
 }
 
 // Draw Held Block
+draw_set_font(scoreFont);
 draw_set_halign(fa_center);
+draw_text(global.border[0] - 64, global.border[3] - 32, "HOLD");
 if global.held_block != -1 {
-    if global.hold_available draw_sprite_ext(global.held_block, 0, x - 32 * 2 - 32 * global.width / 2, 32 * 4, 0.9, 0.9, 0, c_white, 1);
-	else draw_sprite_ext(global.held_block, 0, x - 32 * 2 - 32 * global.width / 2, 32 * 4, 0.9, 0.9, 0, c_gray, 1);
+    if global.hold_available draw_sprite_ext(global.held_block, 0, global.border[0] - 64, global.border[3] + 64, 0.9, 0.9, 0, c_white, 1);
+	else draw_sprite_ext(global.held_block, 0, global.border[0] - 64, global.border[3] + 64, 0.9, 0.9, 0, c_gray, 1);
 }
 
 // Draw Next Blocks
-var posx = x + 32 * 2 + 32 * global.width / 2;
-var posy = y + 32 * 4;
-
+draw_text(global.border[1] + 64, global.border[3] - 32, "NEXT");
+var posx = global.border[1] + 64;
+var posy = global.border[3] + 64;
 for (var i = 0; i < 6; i++) {
-    var block = ds_list_find_value(global.bag, i);
+    var block = global.bag[| i];
 	if is_undefined(block) break;
     draw_sprite_ext(block, 0, posx, posy, 0.9, 0.9, 0, c_white, 1);
     posy += 32 * 3;
