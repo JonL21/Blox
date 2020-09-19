@@ -1,5 +1,5 @@
 # Blox
-A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
+A Tetris clone made in GameMaker Studio 2.
 
 ## Features
 * SRS Rotation System
@@ -7,11 +7,25 @@ A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
 	* Marathon - clear 150 lines as fast as possible
 	* Ultra - get as much points possible in 3 minutes
 	* Sprint - clear 40 lines as fast as possible
+	* Zen - play at your own pace with no speed increases
 * Local Leaderboards
-* Custom Key Binds
-* Animations!
+* Customizable Key Binds
+* Customizable DAS, ARE, SDF
+* Animations! Particle Effects! Shaders!
 
 ## Changelog
+
+### September 19, 2020 - "Woah an update" Update
+* Added Zen mode
+* Added shaders
+* Added some sounds (not final)
+* Added more customizable options
+* Better background visuals
+* Better animations/particle effects
+* Overridden collision system for faster performance
+* Fixed SRS inconsistencies
+* Fixed other bugs
+
 ### May 8, 2019
 * Added ability to make custom key binds in new Options menu
 * Implemented High Scores Leadboard/Database for each game mode
@@ -53,10 +67,12 @@ A Tetris clone made in GameMaker Studio 2 (imported from GameMaker Studio 1).
 * Introduction of different display of line clears
 
 ## To-Do
-* Add some backgrounds
-* Sounds
+* ~~Add some backgrounds~~
+* Sounds / Music(?)
 * Options Menu
-	* Edit Gameplay elements?
-	* Show/Hide Statistics 
-* Proper commenting of code
+	* ~~Edit Gameplay elements?~~
+	* ~~Show/Hide Statistics~~
+	* Change number of visible next blocks
+	* Change animation intensities
+* ~~Proper~~ Thorough commenting of code
 * Refactoring of code
