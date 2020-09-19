@@ -1,8 +1,6 @@
 # Blox
 A Tetris clone made in GameMaker Studio 2.
 
-![Gameplay](https://i.imgur.com/LxHlNyy.gif)
-
 ## Features
 * SRS Rotation System
 * Classic Game Modes:
