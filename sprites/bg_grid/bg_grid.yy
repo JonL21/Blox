@@ -7,12 +7,12 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 32,
-  "bbox_right": 63,
+  "bbox_left": 0,
+  "bbox_right": 0,
   "bbox_top": 0,
-  "bbox_bottom": 31,
-  "HTile": true,
-  "VTile": true,
+  "bbox_bottom": 0,
+  "HTile": false,
+  "VTile": false,
   "For3D": false,
   "width": 64,
   "height": 32,
@@ -24,15 +24,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"63f43d51-a054-484c-86c3-f62eeb7f9a05","path":"sprites/bg_grid/bg_grid.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"63f43d51-a054-484c-86c3-f62eeb7f9a05","path":"sprites/bg_grid/bg_grid.yy",},"LayerId":{"name":"f169b1ba-710d-48af-9ac4-7b863f142e96","path":"sprites/bg_grid/bg_grid.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"bg_grid","path":"sprites/bg_grid/bg_grid.yy",},"resourceVersion":"1.0","name":"63f43d51-a054-484c-86c3-f62eeb7f9a05","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"92c8b83b-cf1d-4289-85c4-975b5d1e12ba","path":"sprites/bg_grid/bg_grid.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"92c8b83b-cf1d-4289-85c4-975b5d1e12ba","path":"sprites/bg_grid/bg_grid.yy",},"LayerId":{"name":"fe483d55-ff95-4d9d-a4ba-92226753c3db","path":"sprites/bg_grid/bg_grid.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"bg_grid","path":"sprites/bg_grid/bg_grid.yy",},"resourceVersion":"1.0","name":"92c8b83b-cf1d-4289-85c4-975b5d1e12ba","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"bg_grid","path":"sprites/bg_grid/bg_grid.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 15.0,
+    "playbackSpeed": 30.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"7ff4d11a-f571-4dc0-90f1-5ed682d3ace0","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"63f43d51-a054-484c-86c3-f62eeb7f9a05","path":"sprites/bg_grid/bg_grid.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"5caad95d-20a1-43ee-ae76-65b9e7d9ec80","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"92c8b83b-cf1d-4289-85c4-975b5d1e12ba","path":"sprites/bg_grid/bg_grid.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -50,8 +50,8 @@
     "showBackdropImage": false,
     "backdropImagePath": "",
     "backdropImageOpacity": 0.5,
-    "backdropWidth": 1920,
-    "backdropHeight": 1080,
+    "backdropWidth": 1366,
+    "backdropHeight": 768,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
     "xorigin": 0,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"f169b1ba-710d-48af-9ac4-7b863f142e96","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fe483d55-ff95-4d9d-a4ba-92226753c3db","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "tilesets",
